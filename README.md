@@ -1,0 +1,2 @@
+# Beadando
+Oprendszer beadandó
