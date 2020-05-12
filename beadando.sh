@@ -34,6 +34,6 @@ if [ $# -eq 0 ]
                 quality=1
         fi
  fi
-RATE=`curl -sb -H "Accept: application/json" "https://api.exchangeratesapi.io/latest?symbols=${toCurrency^^}&base=${fromCurrency^^}" | awk 'BEGIN { FS="\""; RS="," }; { if ($2 == "rates") {print $5} }'| grep -Eo '[+-]?[0-9]+([.][0-9]+)?$
+RATE=`curl -sb -H "Accept: application/json" "https://api.exchangeratesapi.io/latest?symbols=${toCurrency^^}&base=${fromCurrency^^}" | awk 'BEGIN { FS="\""; RS="," }; { if ($2 == "rates") {print $5} }'| grep -Eo '[+-]?[0-9]+([.][0-9]+)?'`
 sum=$(bc <<< "${quality} * ${RATE}")
 echo "$quality $fromCurrency is $sum $toCurrency"
